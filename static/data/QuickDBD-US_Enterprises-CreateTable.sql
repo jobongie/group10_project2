@@ -1,37 +1,40 @@
-﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
--- Link to schema: https://app.quickdatabasediagrams.com/#/d/H23emM
--- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
+﻿-- Step 1 - Drop existing tables if any
 
--- Modify this code to update the DB schema diagram.
--- To reset the sample schema, replace everything with
--- two dots ('..' - without quotes).
+DROP TABLE "NAICS";
+DROP TABLE "BUSINESSES";
 
+-- Step 2 - Create Look up Table
 CREATE TABLE "NAICS" (
-    "sector" VARCHAR   NOT NULL,
-    "name" VARCHAR   NOT NULL,
-    CONSTRAINT "pk_NAICS" PRIMARY KEY (
-        "sector"
-     )
+    "NAICS CODE" VARCHAR PRIMARY KEY, 
+    "NAME" VARCHAR UNIQUE
 );
 
+-- Step 3 - Create Fact Table
 CREATE TABLE "BUSINESSES" (
-    "fips_state_code" VARCHAR   NOT NULL,
-    "state_description" VARCHAR   NOT NULL,
-    "naics_code" VARCHAR   NOT NULL,
-    "naics_description" VARCHAR   NOT NULL,
-    "enterprise_employment_size" VARCHAR   NOT NULL,
-    "number_of_firms" INTEGER   NOT NULL,
-    "number_of_establishments" INTEGER   NOT NULL,
-    "employment" INTEGER   NOT NULL,
-    "employment_range_flag" VARCHAR   NOT NULL,
-    "employment_noise_flag" VARCHAR   NOT NULL,
-    "annual_payroll_($1,000)" INTEGER   NOT NULL,
-    "annual_payroll_noise_flag" VARCHAR   NOT NULL,
-    "year" INTEGER   NOT NULL,
-    "enterprise_employment_size_2" VARCHAR   NOT NULL,
-    "source_name" VARCHAR   NOT NULL
+    "FIPS STATE CODE" VARCHAR,
+    "STATE DESCRIPTION" VARCHAR,
+    "NAICS CODE" VARCHAR,
+    "NAICS DESCRIPTION" VARCHAR,
+    "ENTERPRISE EMPLOYMENT SIZE" VARCHAR,
+    "NUMBER OF FIRMS" INTEGER,
+    "NUMBER OF ESTABLISHMENTS" INTEGER,
+    "EMPLOYMENT" INTEGER,
+    "EMPLOYMENT RANGE FLAG" VARCHAR,
+    "EMPLOYMENT NOISE FLAG" VARCHAR,
+    "ANNUAL PAYROLL ($1,000)" INTEGER,
+    "ANNUAL PAYROLL NOISE FLAG" VARCHAR,
+    "YEAR" INTEGER,
+    "ENTERPRISE EMPLOYMENT SIZE 2" VARCHAR,
+    "Source_Name" VARCHAR
 );
 
-ALTER TABLE "NAICS" ADD CONSTRAINT "fk_NAICS_sector" FOREIGN KEY("sector")
-REFERENCES "BUSINESSES" ("naics_code");
+-- Step 4 - Alter Fact Table to include Foreign Key
+ALTER TABLE "BUSINESSES" ADD CONSTRAINT "fk_BUSINESSES_NAICS CODE" FOREIGN KEY("NAICS CODE")
+REFERENCES "NAICS" ("NAICS CODE");
 
+
+-- Step 5 - Import the two data tables from csv files starting with "NAICS" table, then "BUSINESSES"
+
+-- Step 6 - NOTE: You have to import data first!!!!! Alter Fact Table to include Primary Key id column 
+ALTER TABLE "BUSINESSES"
+ADD COLUMN id SERIAL PRIMARY KEY;
