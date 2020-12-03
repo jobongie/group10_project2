@@ -33,7 +33,8 @@ ALTER TABLE "BUSINESSES" ADD CONSTRAINT "fk_BUSINESSES_NAICS CODE" FOREIGN KEY("
 REFERENCES "NAICS" ("NAICS CODE");
 
 
--- Step 5 - Import the two data tables from csv files starting with "NAICS" table, then "BUSINESSES"
+-- Step 5 - Import the two data tables from csv files starting with "2017_NAICS_Structure_Summary.csv" "NAICS" table,
+--          then "Consolidated State_NAISC Sector 2008-2017" to BUSINESSES" table
 
 -- Step 6 - NOTE: You have to import data first!!!!! Alter Fact Table to include Primary Key id column 
 ALTER TABLE "BUSINESSES"
