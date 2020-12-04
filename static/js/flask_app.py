@@ -21,7 +21,7 @@ Base = automap_base()
 
 Base.prepare(engine, reflect=True)
 
-states = Base.classes.states_electoral_df
+data = Base.classes.data_df
 
 #################################################
 # Flask Routes
@@ -29,8 +29,22 @@ states = Base.classes.states_electoral_df
 @app.route("/")
 def states_electoral_df():
     session = Session(engine)
-    
-    results_df = pd.read_sql(session.query(states.State, states.Pollster, states.Clinton, states.Trump, states.clinton_adjusted, states.trump_adjusted, states.Winner, states.electoral_votes).statement, con=engine)
-    
+
+    data_table = pd.read_sql(session.query(data.YEAR, data.STATE_DESCRIPTION, data.NAICS_CODE, data.NAME, data.ENTERPRISE_EMPLOYMENT_SIZE, data.NUMBER_OF_FIRMS, data.NUMBER_OF_ESTABLISHMENTS, data.EMPLOYMENT, data.ANNUAL_PAYROLL).statement, con=engine)
+    barChart = pd.read_sql(session.query(data.YEAR, data.STATE_DESCRIPTION, data.NAICS_CODE, data.NAME, data.ENTERPRISE_EMPLOYMENT_SIZE, data.NUMBER_OF_ESTABLISHMENTS, data.EMPLOYMENT, data.ANNUAL_PAYROLL).statement, con=engine)
+    scatterPlot pd.read_sql(session.query(data.YEAR, data.STATE_DESCRIPTION, data.NAICS_CODE, data.NAME, data.ENTERPRISE_EMPLOYMENT_SIZE, data.EMPLOYMENT, data.ANNUAL_PAYROLL).statement, con=engine)
+    colorMap pd.read_sql(session.query(data.YEAR, data.STATE_DESCRIPTION, data.NAICS_CODE, data.NAME, data.ENTERPRISE_EMPLOYMENT_SIZE, data.EMPLOYMENT, data.ANNUAL_PAYROLL).statement, con=engine)
+
     session.close()
-    return jsonify(results_df.to_dict(orient='records'))
+    return jsonify(data_table.to_dict(orient='records'))
+    return jsonify(barChart.to_dict(orient='records'))
+    return jsonify(scatterPlot.to_dict(orient='records'))
+    return jsonify(colorMap.to_dict(orient='records'))
+
+
+# For HTML display
+data_table
+    
+
+if __name__ == "__main__":
+    app.run(debug=True)  
