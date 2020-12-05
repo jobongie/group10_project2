@@ -30,6 +30,7 @@ data = Base.classes.data_df
 def states_electoral_df():
     session = Session(engine)
 
+    # HTML Display
     data_table = pd.read_sql(session.query(data.YEAR, data.STATE_DESCRIPTION, data.NAICS_CODE, data.NAME, data.ENTERPRISE_EMPLOYMENT_SIZE, data.NUMBER_OF_FIRMS, data.NUMBER_OF_ESTABLISHMENTS, data.EMPLOYMENT, data.ANNUAL_PAYROLL).statement, con=engine)
     barChart = pd.read_sql(session.query(data.YEAR, data.STATE_DESCRIPTION, data.NAICS_CODE, data.NAME, data.ENTERPRISE_EMPLOYMENT_SIZE, data.NUMBER_OF_ESTABLISHMENTS, data.EMPLOYMENT, data.ANNUAL_PAYROLL).statement, con=engine)
     scatterPlot pd.read_sql(session.query(data.YEAR, data.STATE_DESCRIPTION, data.NAICS_CODE, data.NAME, data.ENTERPRISE_EMPLOYMENT_SIZE, data.EMPLOYMENT, data.ANNUAL_PAYROLL).statement, con=engine)
@@ -41,9 +42,6 @@ def states_electoral_df():
     return jsonify(scatterPlot.to_dict(orient='records'))
     return jsonify(colorMap.to_dict(orient='records'))
 
-
-# For HTML display
-data_table
     
 
 if __name__ == "__main__":
