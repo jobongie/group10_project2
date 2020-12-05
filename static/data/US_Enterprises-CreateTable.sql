@@ -2,6 +2,7 @@
 
 DROP TABLE "NAICS";
 DROP TABLE "BUSINESSES";
+DROP TABLE "STATES";
 
 -- Step 2 - Create NAICS Look up Table
 CREATE TABLE "NAICS" (
@@ -44,10 +45,20 @@ ALTER TABLE "BUSINESSES" ADD CONSTRAINT "fk_BUSINESSES_STATE DESCRIPTION" FOREIG
 REFERENCES "STATES" ("STATE");
 
 
--- Step 7 - Import the two data tables from csv files starting with "2017_NAICS_Structure_Summary.csv" "NAICS" table,
---           "Consolidated State_NAISC Sector 2008-2017" to BUSINESSES" table, "state_codes.csv" to "STATES" table
+-- Step 7 - Import the three data tables from csv files starting with "2017_NAICS_Structure_Summary.csv" "NAICS" table,
+--           "state_codes.csv" to "STATES" table, "Consolidated State_NAISC Sector 2008-2017" to BUSINESSES" table.
 
 -- Step 8 - NOTE: You have to import data first!!!!! Alter Fact Table to include Primary Key id column 
 ALTER TABLE "BUSINESSES"
 ADD COLUMN id SERIAL PRIMARY KEY;
+
+-- Step 9 - Validate tables loaded correctly by running each one of the queries below:
+SELECT * 
+FROM "BUSINESSES";
+
+SELECT * 
+FROM "STATES";
+
+SELECT * 
+FROM "NAICS";
 
