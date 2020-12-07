@@ -1,11 +1,16 @@
 # import Flask and dependencies
-from flask import Flask, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
-from sqlalchemy import create_engine
+import os
+import json
+import requests
+import itertools
 import numpy as np
 import pandas as pd
+from pprint import pprint
+from flask import Flask, jsonify
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.ext.automap import automap_base
 
 app = Flask(__name__)
 
