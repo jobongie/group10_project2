@@ -2,8 +2,9 @@
 
 DROP TABLE "NAICS";
 DROP TABLE "BUSINESSES";
+DROP TABLE "STATES";
 
--- Step 2 - Create Look up Table
+-- Step 2 - Create NAICS Look up Table
 CREATE TABLE "NAICS" (
     "NAICS CODE" VARCHAR PRIMARY KEY, 
     "NAME" VARCHAR UNIQUE
@@ -28,14 +29,36 @@ CREATE TABLE "BUSINESSES" (
     "Source_Name" VARCHAR
 );
 
--- Step 4 - Alter Fact Table to include Foreign Key
+-- Step 4 - Create State Lookup table
+CREATE TABLE "STATES" (
+    "STATE" VARCHAR PRIMARY KEY,
+    "ABBREV" VARCHAR UNIQUE,
+    "STATE CODE" VARCHAR UNIQUE
+);
+
+-- Step 5 - Alter Fact Tables to include NAICS Foreign Key
 ALTER TABLE "BUSINESSES" ADD CONSTRAINT "fk_BUSINESSES_NAICS CODE" FOREIGN KEY("NAICS CODE")
 REFERENCES "NAICS" ("NAICS CODE");
 
+-- Step 6 - Alter Fact Tables to include State Foreign Key
+ALTER TABLE "BUSINESSES" ADD CONSTRAINT "fk_BUSINESSES_STATE DESCRIPTION" FOREIGN KEY("STATE DESCRIPTION")
+REFERENCES "STATES" ("STATE");
 
--- Step 5 - Import the two data tables from csv files starting with "2017_NAICS_Structure_Summary.csv" "NAICS" table,
---          then "Consolidated State_NAISC Sector 2008-2017" to BUSINESSES" table
 
--- Step 6 - NOTE: You have to import data first!!!!! Alter Fact Table to include Primary Key id column 
+-- Step 7 - Import the three data tables from csv files starting with "2017_NAICS_Structure_Summary.csv" "NAICS" table,
+--           "state_codes.csv" to "STATES" table, "Consolidated State_NAISC Sector 2008-2017" to BUSINESSES" table.
+
+-- Step 8 - NOTE: You have to import data first!!!!! Alter Fact Table to include Primary Key id column 
 ALTER TABLE "BUSINESSES"
 ADD COLUMN id SERIAL PRIMARY KEY;
+
+-- Step 9 - Validate tables loaded correctly by running each one of the queries below:
+SELECT * 
+FROM "BUSINESSES";
+
+SELECT * 
+FROM "STATES";
+
+SELECT * 
+FROM "NAICS";
+
