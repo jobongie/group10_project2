@@ -5,11 +5,11 @@ import requests
 import numpy as np
 import pandas as pd
 from pprint import pprint
-from flask import Flask, jsonify
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.automap import automap_base
+from flask import Flask, jsonify, render_template
 
 #################################################
 # Database Setup
@@ -28,6 +28,9 @@ engine.table_names()
 # Flask Setup
 #################################################
 app = Flask(__name__)
+# OR with template rendering since we have multiple html files
+app = Flask(__name__, template_folder="templates")
+
 
 # Create base for OOM
 Base = automap_base()
@@ -39,6 +42,26 @@ bubble = Base.classes.bubble_df
 #################################################
 # Flask Routes
 #################################################
+# Basic outter wrap
+@app.route("/")
+@app.route("/home")
+@app.route("/index")
+def home():
+    return "Hello World!"
+
+# HTTP Methods
+@app.route("/api/v1/users/", methods=['GET', 'POST', 'PUT'])
+def users():
+
+# Dynamic Routes and Variables
+@app.route('/user/<username>')
+def profile(username):
+    ...
+
+@app.route('/<int:year>/<int:month>/<title>')
+def article(year, month, title):
+
+# Data locations
 @app.route("/static/data/")
 def table():
     
@@ -48,11 +71,17 @@ def table():
     session.close()
     return jsonify(tables.to_dict(orient='records'))   
 
+# Template rendering
+@app.route("/")
+def home():
+    """Serve homepage template."""
+    return render_template("index.html")
+
     
 @app.route("/static/data/")
 def bubble():
 
-    bubbles = pd.read_sql(session.query(bubble.SECTOR, .INDUSTRY,bubble.BUSINESS_CLASSIFICATION, bubble.YEAR, bubble.COLOR_GROUP, bubble.ANNUAL_PAYROLL, bubble.EMPLOYMENT, bubble.AVG_SALARY, bubble.AVG_SALARY_F).statement, con=engine)
+    bubbles = pd.read_sql(session.query(bubble.SECTOR, bubble.INDUSTRY, bubble.BUSINESS_CLASSIFICATION, bubble.YEAR, bubble.COLOR_GROUP, bubble.ANNUAL_PAYROLL, bubble.EMPLOYMENT, bubble.AVG_SALARY, bubble.AVG_SALARY_F).statement, con=engine)
     return jsonify(bubbles.to_dict(orient='records'))
 
 
