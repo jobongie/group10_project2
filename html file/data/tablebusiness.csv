@@ -1,4 +1,4 @@
-﻿Sector,Industry,Industry_number,Business_class,Sum_of_NUMBER_OF_FIRMS,Sum_of_EMPLOYMENT,Sum_of_ANNUAL_PAYROLL,Annual_Payroll,Employee_salary
+﻿Sector,Industry,Industry_number,Business_class,Sum of NUMBER OF FIRMS,Sum of EMPLOYMENT,"Sum of ANNUAL PAYROLL ($1,000)",Annual_Payroll,Employee_salary
 b11,"Agriculture, Forestry, Fishing and Hunting",1,1,950,74933,2764642,2764642000,36895
 b21,"Mining, Quarrying, and Oil and Gas Extraction",2,1,6004,1404304,122155381,1.22E+11,86986
 b22,Utilities,3,1,3604,1131625,109001061,1.09E+11,96323
