@@ -36,7 +36,8 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 table = Base.classes.table_df
-bubble = Base.classes.bubble_df
+bubble = Base.classes.tablebusiness
+
 
 #################################################
 # Flask Routes
@@ -48,7 +49,8 @@ def table():
     
     session = Session(engine)
     tables = pd.read_sql(session.query(table.YEAR, table.STATE_DESCRIPTION, table.STATE_CODE, table.NAICS_CODE, table.INDUSTRY, table.ENTERPRISE_EMPLOYMENT_SIZE, table.BUSINESS_CLASSIFICATION, table.SECTOR, table.NUMBER_OF_FIRMS, table.NUMBER_OF_ESTABLISHMENTS, table.EMPLOYMENT, table.ANNUAL_PAYROLL, table.COLOR_GROUP).statement, con=engine)
-    
+    bubbles = pd.read_sql(session.query(bubble.Sector, bubble.Industry, bubble.Industry_number, bubble.Business_class, bubble.INDUSTRY, bubble.Sum_of_NUMBER_OF_FIRMS, bubble.Sum_of_EMPLOYMENT, bubble.Sum_of_ANNUAL_PAYROLL, bubble.Annual_Payroll, bubble.NUMBER_OF_ESTABLISHMENTS, bubble.EMPLOYMENT, bubble.ANNUAL_PAYROLL, bubble.Employee_salary).statement, con=engine)
+                                                  
     session.close()
     return jsonify(tables.to_dict(orient='records'))   
 
@@ -81,7 +83,8 @@ def temp():
 @app.route("/api/data")
 def data():
     session = Session(engine)
-    tables = pd.read_sql(session.query(table.YEAR, table.STATE_DESCRIPTION, table.STATE_CODE, table.NAICS_CODE, table.INDUSTRY, table.ENTERPRISE_EMPLOYMENT_SIZE, table.BUSINESS_CLASSIFICATION, table.SECTOR, table.NUMBER_OF_FIRMS, table.NUMBER_OF_ESTABLISHMENTS, table.EMPLOYMENT, table.ANNUAL_PAYROLL, table.COLOR_GROUP).statement, con=engine)
+    bubbles = pd.read_sql(session.query(bubble.Sector, bubble.Industry, bubble.Industry_number, bubble.Business_class, bubble.INDUSTRY, bubble.Sum_of_NUMBER_OF_FIRMS, bubble.Sum_of_EMPLOYMENT, bubble.Sum_of_ANNUAL_PAYROLL, bubble.Annual_Payroll, bubble.NUMBER_OF_ESTABLISHMENTS, bubble.EMPLOYMENT, bubble.ANNUAL_PAYROLL, bubble.Employee_salary).statement, con=engine)
+    
     session.close()
     return jsonify(tables.to_dict(orient='records')) 
 
@@ -90,7 +93,7 @@ def api(columns):
     split_columns = [column.upper() for column in columns.split(',')]
         
     session = Session(engine)
-    tables = pd.read_sql(session.query([table[column] for column in split_columns ]).statement, con=engine)
+    bubbles = pd.read_sql(session.query([table[column] for column in split_columns ]).statement, con=engine)
     # tables = pd.read_sql(session.query(table.YEAR, table.STATE_DESCRIPTION, table.STATE_CODE, table.NAICS_CODE, table.INDUSTRY, table.ENTERPRISE_EMPLOYMENT_SIZE, table.BUSINESS_CLASSIFICATION, table.SECTOR, table.NUMBER_OF_FIRMS, table.NUMBER_OF_ESTABLISHMENTS, table.EMPLOYMENT, table.ANNUAL_PAYROLL, table.COLOR_GROUP).statement, con=engine)
     
     session.close()

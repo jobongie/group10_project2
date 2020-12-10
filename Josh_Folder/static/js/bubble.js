@@ -328,8 +328,8 @@
   //   }))
 
 
-
-d3.csv("static/data/tablebusiness.csv").then(function(dataset){
+d3.json("/api/data").then(function(dataset){
+//d3.csv("static/data/tablebusiness.csv").then(function(dataset){
 
   dataset.forEach(function(data){
     // data.Industry = +data.Industry;
