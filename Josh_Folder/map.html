@@ -19,15 +19,12 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="static\css\style.css">
+  <link rel="stylesheet" href="static\css\style_bubble.css">
 
-</head>
-  
-  
+</head> 
   
 <body>
-  <header>
-
+  <header>  
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light trn">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Group 10</a>
@@ -43,10 +40,10 @@
               <a class="nav-link nav-link-ltr" href="map.html">Map</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-link-ltr" href="bubble.html">bubble</a>
+              <a class="nav-link nav-link-ltr" href="temp-plot.html">temp-plot</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-link-ltr" href="temp-plot.html">temp-plot</a>
+              <a class="nav-link nav-link-ltr" href="bubble.html">bubble</a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav-link-ltr" href="table.html">Table</a>
@@ -57,183 +54,106 @@
           </ul>
         </div>
       </div>
-    </nav>
-    
-  </header>
-  <!--Carousel Wrapper-->
-<div class ="beutical">
-  <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
-    <!--Indicators-->
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example-2" data-slide-to="1"></li>
-      <li data-target="#carousel-example-2" data-slide-to="2"></li>
-    </ol>
-    <!--/.Indicators-->
-    <!--Slides-->
-    <div class="carousel-inner" role="listbox">
-      <div class="carousel-item active">
-        <div class="view">
-          <img class="d-block w-100" src="images\w1.jpg" 
-            alt="First slide">
-          <div class="mask rgba-black-light"></div>
-        </div>
+    </nav>  
+  </header> 
 
-
-        <div class="header-text">
-
-          <div class="col-md-12 text-center">
-            <h2>
-              <span>Welcome to <strong>Group 10</strong></span>
-            </h2>
-            <br>
-            <h3>
-              <span>something.</span>
-            </h3>
-          </div>
-        </div>
-
-        <div class="carousel-caption">
-          <h3 class="h3-responsive">Light mask</h3>
-          <p>First text</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <!--Mask color-->
-        <div class="view">
-          <img class="d-block w-100" src="images\w2.jpg"
-            alt="Second slide">
-          <div class="mask rgba-black-strong"></div>
-        </div>
-        
-        <div class="carousel-caption">
-          <h3 class="h3-responsive">Strong mask</h3>
-          <p>Secondary text</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <!--Mask color-->
-        <div class="view">
-          <img class="d-block w-100" src="images\w3.jpg"
-            alt="Third slide">
-          <div class="mask rgba-black-slight"></div>
-        </div>
-        <div class="carousel-caption">
-          <h3 class="h3-responsive">Slight mask</h3>
-          <p>Third text</p>
-        </div>
-      </div>
-    
-      <!--/.Slides-->
-      <!--Controls-->
-      <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
-    <!--/.Controls-->
   </div>
-  </div>
-</div>
-  <script type="text/javascript">
-    //Width and height
-    var w = 1000;
-    var h = 700;
+    <script type="text/javascript">
+      //Width and height
+      var w = 1000;
+      var h = 700;
 
-    var margin = {
-        top: 60,
-        bottom: 40,
-        left: 40,
-        right: 40
-      };
+      var margin = {
+          top: 60,
+          bottom: 40,
+          left: 40,
+          right: 40
+        };
 
-      var width = w - margin.left - margin.right;
-      var height = h - margin.top - margin.bottom;
+        var width = w - margin.left - margin.right;
+        var height = h - margin.top - margin.bottom;
 
-    
-    // define map projection
-    var projection = d3.geoAlbersUsa()
-      .translate([w/2, h/2])
-      .scale([1000]);
+      
+      // define map projection
+      var projection = d3.geoAlbersUsa()
+        .translate([w/2, h/2])
+        .scale([1000]);
 
-    //Define default path generator
-    var path = d3.geoPath()
-      .projection(projection);
+      //Define default path generator
+      var path = d3.geoPath()
+        .projection(projection);
 
-    var svg = d3.select("body")
-      .append("svg")
-      .attr("id", "chart")
-      .attr("width", w)
-      .attr("height", h)
-      .append("g")
-      .attr("tranform", "translate(0" + margin.left + "," + margin.top + ")");
+      var svg = d3.select("body")
+        .append("svg")
+        .attr("id", "chart")
+        .attr("width", w)
+        .attr("height", h)
+        .append("g")
+        .attr("tranform", "translate(0" + margin.left + "," + margin.top + ")");
 
-      var color = d3.scaleQuantile()
-        .range(["rgb(237, 248, 233)", "rgb(186, 228, 179)", "rgb(116,196,118)", "rgb(49,163,84)", "rgb(0,109,44)"]);
+        var color = d3.scaleQuantile()
+          .range(["rgb(237, 248, 233)", "rgb(186, 228, 179)", "rgb(116,196,118)", "rgb(49,163,84)", "rgb(0,109,44)"]);
 
-    d3.csv("static/data/demo_data.csv", function(data){
+      d3.csv("static/data/demo_data.csv", function(data){
 
-      color.domain([ d3.min(data, function(d){ return d.value; }),
-        d3.max(data, function(d){ return d.value; })
-        ]);
+        color.domain([ d3.min(data, function(d){ return d.value; }),
+          d3.max(data, function(d){ return d.value; })
+          ]);
 
-    d3.json("static/data/us-states.json", function(json){
+      d3.json("static/data/us-states.json", function(json){
 
-      //Merge the agriculture and GeoJSON data
-      //Loop through once for each agriculture data value
-      for(var i = 0; i < data.length; i++){
-        // grab state name
-        var dataState = data[i].state;
+        //Merge the agriculture and GeoJSON data
+        //Loop through once for each agriculture data value
+        for(var i = 0; i < data.length; i++){
+          // grab state name
+          var dataState = data[i].state;
 
-        //grab data value, and convert from string to float
-        var dataValue = parseFloat(data[i].value);
+          //grab data value, and convert from string to float
+          var dataValue = parseFloat(data[i].value);
 
-        //find the corresponding state inside the GeoJSON
-        for(var n = 0; n < json.features.length; n++){
+          //find the corresponding state inside the GeoJSON
+          for(var n = 0; n < json.features.length; n++){
 
-          // properties name gets the states name
-          var jsonState = json.features[n].properties.name;
-          // if statment to merge by name of state
-          if(dataState == jsonState){
-            //Copy the data value into the JSON
-            // basically creating a new value column in JSON data
-            json.features[n].properties.value = dataValue;
+            // properties name gets the states name
+            var jsonState = json.features[n].properties.name;
+            // if statment to merge by name of state
+            if(dataState == jsonState){
+              //Copy the data value into the JSON
+              // basically creating a new value column in JSON data
+              json.features[n].properties.value = dataValue;
 
-            //stop looking through the JSON
-            break;
+              //stop looking through the JSON
+              break;
+            }
           }
         }
-      }
 
-      svg.selectAll("path")
-        .data(json.features)
-        .enter()
-        .append("path")
-        .attr("d", path)
-        .style("fill", function(d){
-          //get the data value
-          var value = d.properties.value;
+        svg.selectAll("path")
+          .data(json.features)
+          .enter()
+          .append("path")
+          .attr("d", path)
+          .style("fill", function(d){
+            //get the data value
+            var value = d.properties.value;
 
-          if(value){
-            //If value exists
-            return color(value);
-          } else {
-            // If value is undefined
-            //we do this because alaska and hawaii are not in dataset we are using but still in projections
-            return "#ccc"
-          }
+            if(value){
+              //If value exists
+              return color(value);
+            } else {
+              // If value is undefined
+              //we do this because alaska and hawaii are not in dataset we are using but still in projections
+              return "#ccc"
+            }
 
-        });
+          });
 
 
-    });
+      });
 
-})
+  })
 
-  </script>
+    </script>
 </body>
 </html>

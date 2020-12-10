@@ -329,7 +329,7 @@
 
 
 
-d3.csv("tablebusiness.csv").then(function(dataset){
+d3.csv("data/tablebusiness.csv").then(function(dataset){
 
   dataset.forEach(function(data){
     // data.Industry = +data.Industry;
