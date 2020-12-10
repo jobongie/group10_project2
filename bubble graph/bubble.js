@@ -34,7 +34,7 @@
     .range([10,40])  // Size in pixel
   
   // Add legend: circles
-  var valuesToShow = [40000, 100000, 15000]
+  var valuesToShow = [40000, 100000, 20000]
   var xCircle = 100
   var xLabel = 280
   var yCircle = 780
@@ -109,19 +109,19 @@
     //   .classed("aText", true)
     //   .text(textsalary );
 
-    var allLabel = svg.append("text")
-    .attr("x", 490)
-    .attr("y",100)
-    .classed("active", true)
-    .classed("aText", true)
-    .text("Total Annual Payroll of $ 19.9 Trillion");
+    // var allLabel = svg.append("text")
+    // .attr("x", 490)
+    // .attr("y",100)
+    // .classed("active", true)
+    // .classed("aText", true)
+    // .text("Total Annual Payroll of $ 19.9 Trillion");
 
-    var textSeparate = svg.append("text")
-    .attr("x", 490)
-    .attr("y",130)
-    .classed("inactive", true)
-    .classed("aText", true)
-    .text("Employee salary > $50,000          Employee salary < $50,000");
+    // var textSeparate = svg.append("text")
+    // .attr("x", 490)
+    // .attr("y",130)
+    // .classed("inactive", true)
+    // .classed("aText", true)
+    // .text("Employee salary > $50,000          Employee salary < $50,000");
 
 
 
@@ -330,7 +330,6 @@
 
 
 d3.csv("tablebusiness.csv").then(function(dataset){
-//d3.json("/api/data").then(function(dataset){
 
   dataset.forEach(function(data){
     // data.Industry = +data.Industry;
@@ -371,6 +370,10 @@ d3.csv("tablebusiness.csv").then(function(dataset){
     // .attr("cx", 500)
     // .attr("cy", 300)
   
+    function changeText(title, subtitle){
+      d3.select('#chartTitle').html(title);
+      d3.select('#chartSubTitle').html(subtitle)
+    }
 
 
     d3.select("#total").on('click', function(){
@@ -378,9 +381,12 @@ d3.csv("tablebusiness.csv").then(function(dataset){
         .force("x", forceXCombine)
         .force("y", forceYCombine)
         .alphaTarget(1)
-        .restart()
-
-       d3.select(this).attr("text");
+        .restart();
+      
+      let title = "Total Annual Payroll of $ 19.9 Trillion"
+      let subtitle = "Average salary of $49,656"
+      //  d3.select(this).attr("text");
+      changeText(title, subtitle)
       // if (simulation == forceXCombine && simulation == forceYCombine){
 
       // allLabel
@@ -398,7 +404,12 @@ d3.csv("tablebusiness.csv").then(function(dataset){
         .force("y",forceYSeparate)
        
         .alphaTarget(1)
-        .restart()
+        .restart();
+
+      let title = "Salary "
+      let subtitle = "Employee salary > $50,000 and Employee salary < $50,000"
+
+      changeText(title, subtitle)
       // if (simulation == forceXSeparate && simulation == forceYSeparate){
       //     textSeparate
       //     .classed("active", true) 
@@ -417,7 +428,12 @@ d3.csv("tablebusiness.csv").then(function(dataset){
         .force("x", forceXIndustry)
         .force("y", forceYIndustry)
         .alphaTarget(1)
-        .restart()
+        .restart();
+
+      let title = "Industry"
+      let subtitle = "North American Industry Classification System (NAICS)"
+      //  d3.select(this).attr("text");
+      changeText(title, subtitle)
       
 
     })
