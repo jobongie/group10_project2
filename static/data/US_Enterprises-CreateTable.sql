@@ -1,8 +1,9 @@
-﻿-- Step 1 - Drop existing tables if any
-
-DROP TABLE "NAICS";
+﻿-- Step 1 - Drop existing tables sequentially, if any
+DROP TABLE "DATA";
 DROP TABLE "BUSINESSES";
+DROP TABLE "NAICS";
 DROP TABLE "STATES";
+
 
 -- Step 2 - Create NAICS Look up Table
 CREATE TABLE "NAICS" (
@@ -36,23 +37,45 @@ CREATE TABLE "STATES" (
     "STATE CODE" VARCHAR UNIQUE
 );
 
--- Step 5 - Alter Fact Tables to include NAICS Foreign Key
+-- Step 5 - Create Schema for Transformed Table
+CREATE TABLE "DATA"(
+    "YEAR" INTEGER ,
+    "STATE_DESCRIPTION" VARCHAR,
+    "STATE_CODE" VARCHAR,
+    "NAICS_CODE" VARCHAR,
+    "INDUSTRY" VARCHAR,
+    "ENTERPRISE_EMPLOYMENT_SIZE" VARCHAR,
+    "BUSINESS_CLASSIFICATION" VARCHAR,
+    "SECTOR" VARCHAR,
+    "NUMBER_OF_FIRMS" VARCHAR,
+    "NUMBER_OF_ESTABLISHMENTS" VARCHAR,
+    "EMPLOYMENT" INTEGER ,
+    "ANNUAL_PAYROLL" FLOAT ,
+    "COLOR_GROUP" INTEGER ,
+    "INDUSTRY_INDEX" INTEGER 
+);
+
+-- Step 6 - Alter Fact Tables to include NAICS Foreign Key
 ALTER TABLE "BUSINESSES" ADD CONSTRAINT "fk_BUSINESSES_NAICS CODE" FOREIGN KEY("NAICS CODE")
 REFERENCES "NAICS" ("NAICS CODE");
 
--- Step 6 - Alter Fact Tables to include State Foreign Key
+-- Step 7 - Alter Fact Tables to include State Foreign Key
 ALTER TABLE "BUSINESSES" ADD CONSTRAINT "fk_BUSINESSES_STATE DESCRIPTION" FOREIGN KEY("STATE DESCRIPTION")
 REFERENCES "STATES" ("STATE");
 
 
--- Step 7 - Import the three data tables from csv files starting with "2017_NAICS_Structure_Summary.csv" "NAICS" table,
---           "state_codes.csv" to "STATES" table, "Consolidated State_NAISC Sector 2008-2017" to BUSINESSES" table.
+-- Step 8 - Import the four data tables from csv files from data folder starting with "2017_NAICS_Structure_Summary.csv" "NAICS" table,
+--           "state_codes.csv" to "STATES" table, "Consolidated State_NAISC Sector 2008-2017" to BUSINESSES" table, table_df.csv to "DATA" table.
 
--- Step 8 - NOTE: You have to import data first!!!!! Alter Fact Table to include Primary Key id column 
+-- Step 9 - NOTE: You have to import data first!!!!! Alter Fact Table to include Primary Key id column 
 ALTER TABLE "BUSINESSES"
 ADD COLUMN id SERIAL PRIMARY KEY;
 
--- Step 9 - Validate tables loaded correctly by running each one of the queries below:
+-- Step 10 - Alter Transformed Table to include Primary Key id column 
+ALTER TABLE "DATA"
+ADD COLUMN id SERIAL PRIMARY KEY;
+
+-- Step 11 - Validate tables loaded correctly by running each one of the queries below:
 SELECT * 
 FROM "BUSINESSES";
 
@@ -62,3 +85,5 @@ FROM "STATES";
 SELECT * 
 FROM "NAICS";
 
+SELECT * 
+FROM "DATA";
