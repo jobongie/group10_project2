@@ -3,7 +3,7 @@
 
 ## Dashboard Overview
 
-![1-Index.html](images/w1.jpg)
+![1-Index.html](images/sketch2.jpg)
 
 Our project utilizes data that breaks down employment by industry, business size, and revenue. It consists of the following visualizations:
 
@@ -24,7 +24,7 @@ This page focuses on the BLANK graph, it's interactivity utilizes a slider that 
 
 ## SQL DataBase
 
-![2-static\data\US_Enterprises-CreateTable.sql](images/w3.jpg)
+![2-static\data\US_Enterprises-CreateTable.sql](images\ERD-US_Enterprises.png)
 
 We utilize a Flask Server which connects locally to this DataBase. The raw data is imported from **.csv** files and joined into the table **Data** to be transformed into the Visualizations you viewed above.
 
