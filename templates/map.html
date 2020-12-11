@@ -101,7 +101,7 @@
           d3.max(data, function(d){ return d.value; })
           ]);
 
-      d3.json("static/data/us-states.json", function(json){
+      d3.json("/api/data", function(json){
 
         //Merge the agriculture and GeoJSON data
         //Loop through once for each agriculture data value

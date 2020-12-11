@@ -1,4 +1,4 @@
-import {legend} from './legend';
+
 var height = 960
 var width = 620
 var svg = d3.select("#my_dataviz")
