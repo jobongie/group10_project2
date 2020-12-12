@@ -8,7 +8,8 @@ DROP TABLE "STATES";
 -- Step 2 - Create NAICS Look up Table
 CREATE TABLE "NAICS" (
     "NAICS CODE" VARCHAR PRIMARY KEY, 
-    "NAME" VARCHAR UNIQUE
+    "NAME" VARCHAR UNIQUE,
+    "INDEX" INTEGER
 );
 
 -- Step 3 - Create Fact Table
