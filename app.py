@@ -74,12 +74,12 @@ def map():
 
 @app.route("/bubble")
 def bubble():
-    bub_df = table_df[['INDUSTRY_INDEX', 'SECTOR', 'INDUSTRY', 'BUSINESS_CLASSIFICATION', 'EMPLOYMENT','ANNUAL_PAYROLL', 'YEAR', 'COLOR_GROUP']].copy()
-    bubg_df = bub_df.groupby(["INDUSTRY_INDEX","SECTOR", "INDUSTRY", 'BUSINESS_CLASSIFICATION', 'YEAR', 'COLOR_GROUP'])
+    bub_df = table_df[['INDUSTRY_INDEX', 'SECTOR', 'INDUSTRY', 'BUSINESS_CLASSIFICATION', 'EMPLOYMENT','ANNUAL_PAYROLL', 'COLOR_GROUP']].copy()
+    bubg_df = bub_df.groupby(["INDUSTRY_INDEX","SECTOR", "INDUSTRY", 'BUSINESS_CLASSIFICATION', 'COLOR_GROUP'])
     payroll_sum = pd.DataFrame(bubg_df['ANNUAL_PAYROLL'].sum())
     employment_sum = pd.DataFrame(bubg_df['EMPLOYMENT'].sum())
     bubble_df = pd.concat([payroll_sum,employment_sum],axis=1)
-    bubble_df.sort_values(by='YEAR', inplace=True, ascending = True)
+    bubble_df.sort_values(by='INDUSTRY', inplace=True, ascending = True)
     bubble_df.reset_index(inplace = True)
     bubble_df['AVG_SALARY'] = bubble_df['ANNUAL_PAYROLL'] / bubble_df['EMPLOYMENT']
     bubble_df['AVG_SALARY_F'] = bubble_df['AVG_SALARY'].astype(float).map("${:,.0f}".format)
@@ -160,7 +160,7 @@ def scatter():
     pmob_df = pd.concat([ppayroll_sum,pemployment_sum, pfirms_sum],axis=1)
     pmob_df.sort_values(by='YEAR', inplace=True, ascending = True)
     pmob_df.reset_index(inplace = True)
-    return jsonify(pmobs_df.to_dict(orient='records'))
+    return jsonify(pmob_df.to_dict(orient='records'))
 
 if __name__ == "__main__":
     app.run(debug=True)  
