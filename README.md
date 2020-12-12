@@ -41,7 +41,7 @@ It tells the story.
 
 To begin:
 
-1. **PGAdmin4**- Open the Browser of your choice and begin running this program, you must keep it open throughout the operation of the Dashboard. Open the file **static\data\US_Enterprises-CreateTable.sql**, and follow the instructions outlined within, you will need to import the following 3 files after creating their tables.
+1. **PGAdmin4**- Open the Browser of your choice and begin running this program, you must keep it open throughout the operation of the Dashboard. Create a Database within your postgresql server named **Enterprises**, and open the query tool within this Database. Paste the code from the file **static\data\US_Enterprises-CreateTable.sql**, and follow the instructions outlined within, you will need to import the following 3 files after creating their tables.
 
     a. **static\data\2017_NAICS_Structure_Summary.csv**
 
