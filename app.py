@@ -138,7 +138,7 @@ def linechart():
                                         "STATE_DESCRIPTION":"state_description",
                                         "YEAR":"year"})
 
-return jsonify(merge.to_dict(orient='list'))
+    return jsonify(merge.to_dict(orient='list'))
     
 
 @app.route("/api/data")
