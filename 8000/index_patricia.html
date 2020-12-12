@@ -5,33 +5,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Bellybutton Biodiversity</title>
+  <title>Employment & Payroll 2008 - 2017</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
 </head>
 
 <body>
 
   <div class="container">
     
-    <div class="row">
+    <div class="row margin-top-50">
       <div class="col-md-2">
-        <div class="well">
-          <h5>Test Subject ID No.:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
-        </div>
-        
-          <div id="sample-metadata" class="panel-body"></div>
-        </div>
+        <aside class="filters">
+          <!-- <div class="panel panel-default"> -->
+            <!-- <div class="panel-heading">Filter Search</div> -->
+            <!-- <div class="panel-body"> -->
+              
+                <div class="form-group">
+                  <!-- <ul class="list-group" id="filters"> -->
+                    <li class="filter list-group-item">
+                      <label for="date">FIlter by Year</label>
+                      <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                    </li>
+                  <!-- </ul> -->
+                <!-- </ div> -->
+                
+              
+            <!-- </div> -->
+          <!-- </div> -->
+        </aside>
       </div>
-      <div class="col-md-6 col-md-offset-0">
-        <div id="bar"></div>
+      
+      <div class="col-md-10 panel-body">
+        <div id="bar" ></div>
       </div>
-      <div class="col-md-5">
-        <div id="gauge"></div>
-      </div>
-    </div>
+      <br>
+      <br>
+
+    <div class="container">
+    
+      <div class="row margin-top-50">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-10 col-md-offset-2 scatter">
         <div id="bubble"></div>
       </div>
     </div>
