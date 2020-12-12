@@ -84,6 +84,17 @@ def bubble():
     bubble_df['AVG_SALARY'] = bubble_df['ANNUAL_PAYROLL'] / bubble_df['EMPLOYMENT']
     bubble_df['AVG_SALARY_F'] = bubble_df['AVG_SALARY'].astype(float).map("${:,.0f}".format)
 
+    # Match titles to Bubble Chart Code
+    bubble_df = bubble_df.rename(columns={"INDUSTRY":"industry", 
+                                          "COLOR_GROUP":"color_group",
+                                          "INDUSTRY_INDEX":"industry_index",
+                                          "AVG_SALARY_F":"avg_salary_f",
+                                          "AVG_SALARY":"avg_salary",                                          
+                                          "YEAR":"year",
+                                          "SECTOR":"sector",
+                                          "BUSINESS_CLASSIFICATION":"business_classification",
+                                          "ANNUAL_PAYROLL":"annual_payroll",
+                                          "EMPLOYMENT":"employment"})
     
     return jsonify(bubble_df.to_dict(orient='list'))
 
@@ -113,7 +124,21 @@ def linechart():
     merge = pd.merge(s_business_df,b_business_df,  how='left', left_on=["YEAR", "STATE_DESCRIPTION","STATE_CODE", 'NAICS_CODE', 'INDUSTRY'], right_on = ["YEAR", "STATE_DESCRIPTION","STATE_CODE", 'NAICS_CODE', 'INDUSTRY'])
     merge.dropna(subset = ["BUSINESS_CLASSIFICATION_B"], inplace=True)
 
-    return jsonify(merge.to_dict(orient='records'))
+    bubble_df = bubble_df.rename(columns={"ANNUAL_PAYROLL_B":"annual_payroll_b", 
+                                        "ANNUAL_PAYROLL_S":"annual_payroll_s",
+                                        "AVG_SALARY_B":"avg_salary_b",
+                                        "AVG_SALARY_S":"avg_salary_s",
+                                        "BUSINESS_CLASSIFICATION_B":"business_classification_b",                                          
+                                        "BUSINESS_CLASSIFICATION_S":"business_classification_s",
+                                        "EMPLOYMENT_B":"employment_b",
+                                        "EMPLOYMENT_S":"employment_s",
+                                        "INDUSTRY":"industry",
+                                        "NAICS_CODE":"naics_code",
+                                        "STATE_CODE":"state_code",
+                                        "STATE_DESCRIPTION":"state_description",
+                                        "YEAR":"year"})
+
+return jsonify(merge.to_dict(orient='list'))
     
 
 @app.route("/api/data")
