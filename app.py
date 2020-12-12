@@ -124,7 +124,7 @@ def linechart():
     merge = pd.merge(s_business_df,b_business_df,  how='left', left_on=["YEAR", "STATE_DESCRIPTION","STATE_CODE", 'NAICS_CODE', 'INDUSTRY'], right_on = ["YEAR", "STATE_DESCRIPTION","STATE_CODE", 'NAICS_CODE', 'INDUSTRY'])
     merge.dropna(subset = ["BUSINESS_CLASSIFICATION_B"], inplace=True)
 
-    bubble_df = bubble_df.rename(columns={"ANNUAL_PAYROLL_B":"annual_payroll_b", 
+    merge = merge.rename(columns={"ANNUAL_PAYROLL_B":"annual_payroll_b", 
                                         "ANNUAL_PAYROLL_S":"annual_payroll_s",
                                         "AVG_SALARY_B":"avg_salary_b",
                                         "AVG_SALARY_S":"avg_salary_s",
