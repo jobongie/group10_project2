@@ -101,3 +101,12 @@
     width: 96.66666666666666%;
     color: #fff;
 }
+
+.scatter {
+    margin-top: 100px; 
+      
+  }
+
+  .filters .panel-body {
+    padding: 0;
+  }

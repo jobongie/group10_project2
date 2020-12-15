@@ -138,13 +138,15 @@
   </div>
   <!--/.Carousel Wrapper-->
   <!--  -->
-  <div class="container">    
+  <div class="container">
+    
     <div class="row margin-top-50">
-      <div class="col-md-12">
+      <div class="col-md-2">
         <aside class="filters">
           <!-- <div class="panel panel-default"> -->
             <!-- <div class="panel-heading">Filter Search</div> -->
-            <!-- <div class="panel-body"> -->              
+            <!-- <div class="panel-body"> -->
+              
                 <div class="form-group">
                   <!-- <ul class="list-group" id="filters"> -->
                     <li class="filter list-group-item">
@@ -152,36 +154,37 @@
                       <select id="selDataset" onchange="optionChanged(this.value)"></select>
                     </li>
                   <!-- </ul> -->
-                </div>             
-            <!-- </div> -->
+                <!-- </ div> -->
+                
+              
             <!-- </div> -->
           <!-- </div> -->
         </aside>
-      </div>      
-        <div class="col-md-6 panel-body">
+      </div>
+      
+      <div class="col-md-10 panel-body">
         <div id="bar" ></div>
-        </div>
-          <br>
-          <br>
-    </div>
-    <div class="container">    
-      <div class="row margin-top-50">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-2 scatter">
-            <div id="bubble"></div>
-          </div>
-        </div>
+      </div>
+      <br>
+      <br>
+
+    <div class="container">
+    
+      <div class="row justify-content-center margin-top-50">
+    <div class="row">
+      <div class="col-md-12 scatter">
+        <div id="bubble"></div>
       </div>
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="../static/js/app.js"></script>
+  <script src="../static/js/scroll.js"></script>
 
-
-    <script src="../static/js/scroll.js"></script>
-    <script src="../static/js/bubble.js"></script>
-    <script>src="../static/js/app.js"</script>
-    
-
+  
 </body>
 
 </html>
+

@@ -40,7 +40,6 @@ function buildCharts(sampleYEAR) {
 
       
       var findings = data.filter(d => d.YEAR == sampleYEAR)
-      console.log(findings)
       var payroll = findings.map(d => d.ANNUAL_PAYROLL)
       var employment = findings.map(d => d.EMPLOYMENT)
       var firms = findings.map(d => d.FIRMS_log)

@@ -2,14 +2,14 @@ function init() {
   // Grab a reference to the dropdown select element
   var selection = d3.select("#selDataset");
 
-  d3.json("/linechart").then(function(data){
+  d3.json("/scatter").then(function(data){
       // get the YEAR data to the dropdwown menu
 
       var sampleYEAR = data.map(d => d.YEAR);
       var usedNames = []
-      sampleYEAR.forEach((year) => {
+    sampleYEAR.forEach((year) => {
       
- 
+
       if (usedNames.indexOf(year) == -1) {
       selection
         .append("option")
@@ -35,17 +35,17 @@ init();
 function buildCharts(sampleYEAR) {
   //update demographic info area
  
-  
-  d3.json("/linechart").then((data) => {
+  d3.json("/scatter").then((data) => {
+    
 
       
       var findings = data.filter(d => d.YEAR == sampleYEAR)
-      
+
       var payroll = findings.map(d => d.ANNUAL_PAYROLL)
       var employment = findings.map(d => d.EMPLOYMENT)
       var firms = findings.map(d => d.FIRMS_log)
       var industries = findings.map(d => d.INDUSTRY)
-      var sector = findings.map(d => d.SECTOR)
+      var code = findings.map(d => d.NAICS_CODE)
 
       var findings_b = data.filter(d => d.BUSINESS_CLASSIFICATION == "Large Business")
       var findings_b_y = findings_b.filter(d => d.YEAR == sampleYEAR)
@@ -54,8 +54,10 @@ function buildCharts(sampleYEAR) {
       var employment_b = findings_b_y.map(d => d.EMPLOYMENT)
       var firms_b = findings_b_y.map(d => d.FIRMS_log)
       var industries_b = findings_b_y.map(d => d.INDUSTRY)
-      var sector_b = findings_b_y.map(d => d.SECTOR)
+      var code_b = findings_b_y.map(d => d.NAICS_CODE)
+      var code_bb = code_b.toString()
 
+      console.log(code_b)
 
       var findings_s = data.filter(d => d.BUSINESS_CLASSIFICATION == "Small Business")
       var findings_s_y = findings_s.filter(d => d.YEAR == sampleYEAR)
@@ -64,63 +66,71 @@ function buildCharts(sampleYEAR) {
       var employment_s = findings_s_y.map(d => d.EMPLOYMENT)
       var firms_s = findings_s_y.map(d => d.FIRMS_log)
       var industries_s = findings_s_y.map(d => d.INDUSTRY)
-      var sector_s = findings_s_y.map(d => d.SECTOR)
+      var code_s = findings_s_y.map(d => d.NAICS_CODE)
+      var code_ss = code_s.toString()
       
       
-         
+      console.log(findings_b);
+            
     
        //  Build bar Chart
       
        var trace1 =
         {
-          y:employment_b,
-          x:industries_b,
+          y: employment_b,
+          x: industries_b,
           name: 'Large Business',
-          text:industries_b,
-          type:"bar",
-          // orientation: "h",
-          
+          text: industries_b,
+          type: "bar",
           marker: {
-            color: 'blue'
-          },
-        
-          
+            color: '#Steel blue'
+          }
         };
           
 
         var trace2 ={
-          y:employment_s,
-          x:industries_s,
+          y: employment_s,
+          x: industries_s,
           name: 'Small Business',
-          text:industries_s,
-          type:"bar",
-          // orientation: "h",
-       
-        
+          text: industries_s,
+          type: "bar",
           marker: {
-            color: 'orange'
+            color: 'Orange'
           
   
         }
       };
      
       var data = [trace1, trace2];
-      
+
       var layout = {
-        barmode: 'group',
-        title: "EMPLOYMENT BY INDUSTRY",
+        autosize: false,
+        width: 900,
+        height: 700,
+        margin: {
+          l: 50,
+          r: 50,
+          b: 100,
+          t: 100,
+          pad: 4,
+        },
+        xaxis: {
+          tickangle: 45,
+          automargin: true
+        },
         yaxis: {
           automargin: true
         },
-        height:400,
-        width: 1100,
+        
+        barmode: 'group',
+        title: "EMPLOYMENT BY INDUSTRY",
         
       };
-      
+  
       Plotly.newPlot("bar", data, layout);
 
       //create bubble chart
-      var trace3 = {
+      var trace2 = {
         x: employment,
         y: payroll,
       //   text: text,
@@ -141,30 +151,20 @@ function buildCharts(sampleYEAR) {
       }
       };
 
-     
-
-      var data = [trace3];
+      var data = [trace2];
 
       var layout = {
         
-        // showlegend: true,
-        // margin: { t: 0 },
+        showlegend: false,
+        margin: { t: 0 },
         xaxis: { title: "TOTAL EMPLOYMENT (PEOPLE)" },
         yaxis: { title: "TOTAL PAYROLL ($)" },
         hovermode: "closest",
-        height: 400,
-        width: 1100
-
         };
 
-      //   var layout_2 = {
-      //     xaxis:{title: "OTU ID"},
-      //     yaxis: {title:"sample values"},
-      //     height: 600,
-      //     width: 1000
-      // };
+       
 
-      
+
 
 
       Plotly.newPlot('bubble', data, layout);

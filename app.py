@@ -39,6 +39,7 @@ app = Flask(__name__)
 # # OR with template rendering since we have multiple html files
 # app = Flask(__name__, template_folder="templates")
     
+
 #################################################
 # Flask Routes
 #################################################
@@ -150,16 +151,17 @@ def data():
 
 @app.route("/scatter")
 def scatter():
-    pmobs_df = table_df[['YEAR', 'SECTOR', 'INDUSTRY', 'NUMBER_OF_FIRMS', 'EMPLOYMENT','ANNUAL_PAYROLL']].copy()
+    pmobs_df = table_df[['YEAR', 'NAICS_CODE', 'INDUSTRY', "NUMBER_OF_FIRMS", "BUSINESS_CLASSIFICATION",'EMPLOYMENT','ANNUAL_PAYROLL']].copy()
     remove_data = ['Industries not classified', 'X']
     pmobs_df = pmobs_df.loc[~pmobs_df["INDUSTRY"].isin(remove_data)]
-    pmobg_df = pmobs_df.groupby(['YEAR', 'SECTOR', 'INDUSTRY', ])
+    pmobg_df = pmobs_df.groupby(['YEAR', 'NAICS_CODE', 'INDUSTRY', "BUSINESS_CLASSIFICATION" ])
     ppayroll_sum = pd.DataFrame(pmobg_df['ANNUAL_PAYROLL'].sum())
     pemployment_sum = pd.DataFrame(pmobg_df['EMPLOYMENT'].sum())
     pfirms_sum = pd.DataFrame(pmobg_df['NUMBER_OF_FIRMS'].sum())
     pmob_df = pd.concat([ppayroll_sum,pemployment_sum, pfirms_sum],axis=1)
     pmob_df.sort_values(by='YEAR', inplace=True, ascending = True)
     pmob_df.reset_index(inplace = True)
+    pmob_df['FIRMS_log'] = np.log2(pmob_df['NUMBER_OF_FIRMS'])
     return jsonify(pmob_df.to_dict(orient='records'))
 
 

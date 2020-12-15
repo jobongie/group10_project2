@@ -1,6 +1,6 @@
 NAICS CODE,NAME,INDEX
-11,"Agriculture, Forestry, Fishing and Hunting",1
-21,"Mining, Quarrying, and Oil and Gas Extraction",2
+11,"Agric., Forestry, Fishing and Hunting",1
+21,"Mining, Quarrying, and O&G Extraction",2
 22,Utilities,3
 23,Construction,4
 31-33,Manufacturing,5
@@ -10,14 +10,14 @@ NAICS CODE,NAME,INDEX
 51,Information,9
 52,Finance and Insurance,10
 53,Real Estate and Rental and Leasing,11
-54,"Professional, Scientific, and Technical Services",12
+54,"Prof., Scientific, and Tech Services",12
 55,Management of Companies and Enterprises,13
-56,Administrative and Support and Waste Management and Remediation Services,14
+56,Admin & Support and Waste Mgmt & Svcs,14
 61,Educational Services,15
 62,Health Care and Social Assistance,16
 71,"Arts, Entertainment, and Recreation",17
 72,Accommodation and Food Services,18
-81,Other Services (except Public Administration),19
+81,Other Services (except Public Admin.),19
 92,Public Administration,20
 99,Industries not classified,21
 --,Total,22
