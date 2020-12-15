@@ -1,3 +1,4 @@
+
 (function(){
   
   var width = 980;
@@ -33,7 +34,7 @@
     .range([10,40])  // Size in pixel
   
   // Add legend: circles
-  var valuesToShow = [40000, 100000, 15000]
+  var valuesToShow = [40000, 100000, 20000]
   var xCircle = 100
   var xLabel = 280
   var yCircle = 780
@@ -108,28 +109,28 @@
     //   .classed("aText", true)
     //   .text(textsalary );
 
-    var allLabel = svg.append("text")
-    .attr("x", 490)
-    .attr("y",100)
-    .classed("active", true)
-    .classed("aText", true)
-    .text("Total Annual Payroll of $ 19.9 Trillion");
+    // var allLabel = svg.append("text")
+    // .attr("x", 490)
+    // .attr("y",100)
+    // .classed("active", true)
+    // .classed("aText", true)
+    // .text("Total Annual Payroll of $ 19.9 Trillion");
 
-    var textSeparate = svg.append("text")
-    .attr("x", 490)
-    .attr("y",130)
-    .classed("inactive", true)
-    .classed("aText", true)
-    .text("Employee salary > $50,000          Employee salary < $50,000");
-
-
+    // var textSeparate = svg.append("text")
+    // .attr("x", 490)
+    // .attr("y",130)
+    // .classed("inactive", true)
+    // .classed("aText", true)
+    // .text("Employee salary > $50,000          Employee salary < $50,000");
 
 
-  var color = d3.scaleOrdinal().domain(["1", "2"]).range(["steelblue", "orange"])
-  var radiusScale = d3.scaleSqrt().domain([14666, 101309]).range([5,40])
+
+
+  var color = d3.scaleOrdinal().domain(["2", "1"]).range(["steelblue", "orange"])
+  var radiusScale = d3.scaleSqrt().domain([16181, 107726]).range([5,40])
 
   var forceXSeparate = d3.forceX(function(d){
-    if (d.Employee_salary >= 50000){
+    if (d.avg_salary>= 50000){
       return 300
     }
     else{
@@ -139,7 +140,7 @@
 
 
   var forceYSeparate = d3.forceY(function(d){
-    if (d.Employee_salary >= 50000){
+    if (d.avg_salary >= 50000){
       return 310
     }
     else{
@@ -152,72 +153,72 @@
 
 
   var forceXIndustry = d3.forceX(function(d){
-    if (d.Industry_number === 1){
+    if (d.industry_index === 1){
       return 140
     }
-    else if (d.Industry_number === 2){
+    else if (d.industry_index === 2){
       return 360
     }
 
-    else if (d.Industry_number === 3){
+    else if (d.industry_index === 3){
       return 530
     }
 
-    else if (d.Industry_number === 4){
+    else if (d.industry_index === 4){
       return 680
     }
 
-    else if (d.Industry_number === 5){
+    else if (d.industry_index=== 5){
       return 840
     }
-    if (d.Industry_number === 6){
+    if (d.industry_index === 6){
       return 140
     }
-    else if (d.Industry_number === 7){
+    else if (d.industry_index === 7){
       return 360
     }
 
-    else if (d.Industry_number === 8){
+    else if (d.industry_index === 8){
       return 530
     }
 
-    else if (d.Industry_number === 9){
+    else if (d.industry_index === 9){
       return 680
     }
 
-    else if (d.Industry_number === 10){
+    else if (d.industry_index === 10){
       return 840
     }
-    if (d.Industry_number === 11){
+    if (d.industry_index === 11){
       return 140
     }
-    else if (d.Industry_number === 12){
+    else if (d.industry_index === 12){
       return 360
     }
 
-    else if (d.Industry_number === 13){
+    else if (d.industry_index=== 13){
       return 530
     }
 
-    else if (d.Industry_number === 14){
+    else if (d.industry_index=== 14){
       return 680
     }
 
-    else if (d.Industry_number === 15){
+    else if (d.industry_index === 15){
       return 840
     }
-    if (d.Industry_number === 16){
+    if (d.industry_index=== 16){
       return 140
     }
-    else if (d.Industry_number === 17){
+    else if (d.industry_index === 17){
       return 360
     }
 
-    else if (d.Industry_number === 18){
+    else if (d.industry_index === 18){
       return 530
     }
 
-    else if (d.Industry_number === 19){
+    else if (d.industry_index === 19){
       return 680
     }
 
@@ -229,72 +230,72 @@
   })
 
   var forceYIndustry = d3.forceY(function(d){
-    if (d.Industry_number === 1){
+    if (d.industry_index === 1){
       return 140
     }
-    else if (d.Industry_number === 2){
-      return 140
-    }
-
-    else if (d.Industry_number === 3){
+    else if (d.industry_index === 2){
       return 140
     }
 
-    else if (d.Industry_number === 4){
+    else if (d.industry_index === 3){
       return 140
     }
 
-    else if (d.Industry_number === 5){
+    else if (d.industry_index === 4){
       return 140
     }
-    if (d.Industry_number === 6){
-      return 280
-    }
-    else if (d.Industry_number === 7){
-      return 280
-    }
 
-    else if (d.Industry_number === 8){
+    else if (d.industry_index=== 5){
+      return 140
+    }
+    if (d.industry_index=== 6){
       return 280
     }
-
-    else if (d.Industry_number === 9){
+    else if (d.industry_index === 7){
       return 280
     }
 
-    else if (d.Industry_number === 10){
+    else if (d.industry_index === 8){
       return 280
     }
-    if (d.Industry_number === 11){
+
+    else if (d.industry_index === 9){
+      return 280
+    }
+
+    else if (d.industry_index === 10){
+      return 280
+    }
+    if (d.industry_index=== 11){
       return 420
     }
-    else if (d.Industry_number === 12){
+    else if (d.industry_index === 12){
       return 420
     }
 
-    else if (d.Industry_number === 13){
+    else if (d.industry_index === 13){
       return 420
     }
 
-    else if (d.Industry_number === 14){
+    else if (d.industry_index === 14){
       return 420
     }
 
-    else if (d.Industry_number === 15){
+    else if (d.industry_index === 15){
       return 420
     }
-    if (d.Industry_number === 16){
+    if (d.industry_index === 16){
       return 560
     }
-    else if (d.Industry_number === 17){
-      return 560
-    }
-
-    else if (d.Industry_number === 18){
+    else if (d.industry_index === 17){
       return 560
     }
 
-    else if (d.Industry_number === 19){
+    else if (d.industry_index === 18){
+      return 560
+    }
+
+    else if (d.industry_index=== 19){
       return 560
     }
 
@@ -311,7 +312,7 @@
 
   // var forceXCombine = d3.forceX(width/2).strenght(0.05)
   var forceCollide = d3.forceCollide(function(d){
-    return radiusScale(d.Employee_salary);
+    return radiusScale(d.avg_salary);
   })
 
   var simulation = d3.forceSimulation()
@@ -327,15 +328,17 @@
   //   }))
 
 
-//d3.json("/api/data").then(function(dataset){
-d3.csv("/static/data/tablebusiness.csv").then(function(dataset){
+
+ d3.json("/bubble").then(function(dataset){
+  
+ 
 
   dataset.forEach(function(data){
     // data.Industry = +data.Industry;
-    data.Business_class =+data.Business_class;
-    data.Employee_salary = +data.Employee_salary;
-    data.Sector= +data.Sector
-    data.Industry_number =+data.Industry_number
+    data.avg_salary =+data.avg_salary;
+    data.color_group = +data.color_group;
+    data.sector = +data.sector
+    data.industry_index =+data.industry_index
   })
   // d3.queue()
   //   .defer(d3.csv, "tablebusiness.csv")
@@ -343,21 +346,21 @@ d3.csv("/static/data/tablebusiness.csv").then(function(dataset){
   
   
   // function ready (error, business){
-    var circles = svg.selectAll(".Sector")
+    var circles = svg.selectAll(".sector")
     .data(dataset)
     .enter()
     .append("circle")
-    .attr("class", "Sector")
+    .attr("class", "sector")
     .attr("r", function(d){
-      return radiusScale(d.Employee_salary)
+      return radiusScale(d.avg_salary)
       
     })
     .attr("fill", function(d){
-      return color(d.Business_class)     
+      return color(d.color_group)     
     })
 
     .attr("stroke", function(d){ 
-      return d3.rgb(color(d.Business_class)).darker(); 
+      return d3.rgb(color(d.color_group)).darker(); 
     })
     .attr("stroke-width", 1)
 
@@ -369,6 +372,10 @@ d3.csv("/static/data/tablebusiness.csv").then(function(dataset){
     // .attr("cx", 500)
     // .attr("cy", 300)
   
+    function changeText(title, subtitle){
+      d3.select('#chartTitle').html(title);
+      d3.select('#chartSubTitle').html(subtitle)
+    }
 
 
     d3.select("#total").on('click', function(){
@@ -376,9 +383,12 @@ d3.csv("/static/data/tablebusiness.csv").then(function(dataset){
         .force("x", forceXCombine)
         .force("y", forceYCombine)
         .alphaTarget(1)
-        .restart()
-
-       d3.select(this).attr("text");
+        .restart();
+      
+      let title = "Total Annual Payroll of $ 19.9 Trillion"
+      let subtitle = "Average salary of $49,656"
+      //  d3.select(this).attr("text");
+      changeText(title, subtitle)
       // if (simulation == forceXCombine && simulation == forceYCombine){
 
       // allLabel
@@ -396,7 +406,12 @@ d3.csv("/static/data/tablebusiness.csv").then(function(dataset){
         .force("y",forceYSeparate)
        
         .alphaTarget(1)
-        .restart()
+        .restart();
+
+      let title = "Salary "
+      let subtitle = "Employee salary > $50,000 and Employee salary < $50,000"
+
+      changeText(title, subtitle)
       // if (simulation == forceXSeparate && simulation == forceYSeparate){
       //     textSeparate
       //     .classed("active", true) 
@@ -415,7 +430,12 @@ d3.csv("/static/data/tablebusiness.csv").then(function(dataset){
         .force("x", forceXIndustry)
         .force("y", forceYIndustry)
         .alphaTarget(1)
-        .restart()
+        .restart();
+
+      let title = "Industry"
+      let subtitle = "North American Industry Classification System (NAICS)"
+      //  d3.select(this).attr("text");
+      changeText(title, subtitle)
       
 
     })
@@ -443,7 +463,7 @@ d3.csv("/static/data/tablebusiness.csv").then(function(dataset){
     .attr("class", "tooltip")
     .offset([80, -20])
     .html(function(d) {
-      return (`${d.Industry}<br> Salary: $ ${d.Employee_salary}`);
+      return (`${d.industry}<br> Salary: $ ${d.avg_salary_f}`);
     });
 
     svg.call(toolTip);
@@ -463,5 +483,6 @@ d3.csv("/static/data/tablebusiness.csv").then(function(dataset){
   });
 
 })();
+
 
 

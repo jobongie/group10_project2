@@ -162,6 +162,11 @@ def scatter():
     pmob_df.reset_index(inplace = True)
     return jsonify(pmob_df.to_dict(orient='records'))
 
+
+@app.route("/charts")
+def charts():
+    return render_template("bubble.html")
+
 if __name__ == "__main__":
     app.run(debug=True)  
 
