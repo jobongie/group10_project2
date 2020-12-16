@@ -31,7 +31,7 @@ We utilize a Flask Server which connects locally to this DataBase. The raw data 
 
 ## Presentation
 
-![2-Project_2_Group_10.pptx](images/w3.jpg)
+![2-Project_2_Group_10.pptx](images/Pres.png)
 
 It tells the story.
 
@@ -41,13 +41,15 @@ It tells the story.
 
 To begin:
 
-1. **PGAdmin4**- Open the Browser of your choice and begin running this program, you must keep it open throughout the operation of the Dashboard. Create a Database within your postgresql server named **Enterprises**, and open the query tool within this Database. Paste the code from the file **static\data\US_Enterprises-CreateTable.sql**, and follow the instructions outlined within, you will need to import the following 3 files after creating their tables.
+1. **PGAdmin4**- Open the Browser of your choice and begin running this program, you must keep it open throughout the operation of the Dashboard. Create a Database within your postgresql server named **Enterprises**, and open the query tool within this Database. Paste the code from the file **static\data\US_Enterprises-CreateTable.sql**, and follow the instructions outlined within, you will need to import the following 4 files after creating their tables.
 
     a. **static\data\2017_NAICS_Structure_Summary.csv**
 
-    b. **static\data\Consolidated State_NAISC Sector 2008-2017.csv**
+    b. **static\data\Consolidated State_NAISC Sector 2008-2017. csv**
 
     c. **static\data\state_codes.csv**
+
+    d. **static\data\data.csv**
 
 2. **app.py**- Within the main directory of **Group10_PROJECT2** you will find this file, {dbuser} & {dbpassword} will need to match your postgresql server user credentials (save the changes).
 
