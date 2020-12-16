@@ -3,7 +3,7 @@
 
 ## Dashboard Overview
 
-![1-index](images\Dashboard_Index.PNG)
+![Dashboard_Index](images\Dashboard_Index.jpg)
 
 Our project utilizes data that breaks down employment by industry, business size, and revenue. It consists of the following visualizations:
 
@@ -13,35 +13,35 @@ Our project utilizes data that breaks down employment by industry, business size
 
 This page shows the data imported from the Database Data and returned in a jsonified output for your viewing pleasure.
 
-![2-bubble](images\Dashboard_Index.PNG)
+![Dashboard_Index](images\Dashboard_Index.PNG)
 
 3. **BubbleChart**- Uses the Flask routing @/bubble
 
 
-![3-api/data](images/api_data.png)
+![api_data](images/api_data.png)
 
 This page shows the data imported from the Database Data and returned in a jsonified output for your viewing pleasure.
 
 4. **/api/data**- Shows the imported and jsonified Database Table_df
 
-![4-Small Business Map](images\us_map_small_businesses.png)
+![us_map_small_businesses](images\us_map_small_businesses.png)
 
 This page uses Pandas to convert the data to a color map. This map shows a breakdown of Small Business Data showing state by state comparisons with color intensity as the relative strength of each industry. Using D3 and Bootstrap, you have interactivity and automated image printing. Run in LocalHost:8000
 
-![5-Big Business Map](images\us_map_big_businesses.png)
+![us_map_big_businesses](images\us_map_big_businesses.png)
 
 This page uses Pandas to convert the data to a color map. This map shows a breakdown of Big Business Data showing state by state comparisons with color intensity as the relative strength of each industry. Using D3 and Bootstrap, you have interactivity and automated image printing. Run in LocalHost:8000
 
 ## SQL DataBase
 
-![ERD-US_Enterprises](Images/ERD-US_Enterprises.png)
+![ERD-US_Enterprises](images/ERD-US_Enterprises.png)
 
 We utilize a Flask Server which connects locally to this DataBase. The raw data is imported from **.csv** files and joined into the table **Data** to be transformed into the Visualizations you viewed above.
 
 
 ## Presentation
 
-![7-Project_2_Group_10.pptx](images/Pres.png)
+![Pres](images/Pres.png)
 
 It tells the story.
 
