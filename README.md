@@ -18,7 +18,7 @@ Our project utilizes data that breaks down employment by industry, business size
 
 ![us_map_big_businesses](images\us_map_big_businesses.png)
 
-4. **Big Business Map**- Uses the Flask routing @/map1
+4. **Large Business Map**- Uses the Flask routing @/map1
 
 
 ![us_map_small_businesses](images\us_map_small_businesses.png)
@@ -32,7 +32,7 @@ Our project utilizes data that breaks down employment by industry, business size
 
 
 
-## SQL DataBase
+## POSTGRESQL DataBase
 
 ![ERD-US_Enterprises](images/ERD-US_Enterprises.png)
 
