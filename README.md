@@ -25,11 +25,11 @@ This page shows the data imported from the Database Data and returned in a jsoni
 
 ![4-Small Business Map](images\us_map_small_businesses.png)
 
-This page uses Pandas to convert the data to a color map. This map shows a breakdown of Small Business Data showing state by state comparisons with color intensity as the relative strength of each industry.
+This page uses Pandas to convert the data to a color map. This map shows a breakdown of Small Business Data showing state by state comparisons with color intensity as the relative strength of each industry. Run in LocalHost:8000
 
 ![5-Big Business Map](images\us_map_big_businesses.png)
 
-This page uses Pandas to convert the data to a color map. This map shows a breakdown of Big Business Data showing state by state comparisons with color intensity as the relative strength of each industry.
+This page uses Pandas to convert the data to a color map. This map shows a breakdown of Big Business Data showing state by state comparisons with color intensity as the relative strength of each industry. Run in LocalHost:8000
 
 ## SQL DataBase
 
