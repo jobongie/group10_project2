@@ -34,7 +34,7 @@ This page uses Pandas to convert the data to a color map. This map shows a break
 
 ## SQL DataBase
 
-![US_Enterprises](images\ERD-US_Enterprises.png)
+![US_Enterprises](Images\ERD-US_Enterprises.png)
 
 We utilize a Flask Server which connects locally to this DataBase. The raw data is imported from **.csv** files and joined into the table **Data** to be transformed into the Visualizations you viewed above.
 
