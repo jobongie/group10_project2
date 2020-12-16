@@ -5,7 +5,7 @@
 
 ![Dashboard_Index](images/Dashboard_Index.png)
 
-Our project utilizes data that breaks down employment by industry, business size, and revenue. Notable transformations were conducted in the Analysis-Latest.ipynb to perform the ETL phase of the project. The project consists of the following visualizations:
+Our project utilizes data that breaks down employment by industry, business size, and revenue. Notable transformations were conducted in the Analysis-Latest.ipynb to perform the ETL phase of the project. In addition to the libraries learned in class, we utilized a new Javascript grid layout library called Masonry to feature images that represents each member of the team. The project consists of the following visualizations:
 
 1. **Group Bar Chart**- Uses the Flask routing @/linechart
 
