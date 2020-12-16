@@ -3,7 +3,7 @@
 
 ## Dashboard Overview
 
-![Dashboard_Index](images\Dashboard_Index.jpg)
+![Dashboard_Index](Images\Dashboard_Index.png)
 
 Our project utilizes data that breaks down employment by industry, business size, and revenue. It consists of the following visualizations:
 
