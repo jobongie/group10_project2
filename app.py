@@ -161,7 +161,8 @@ def scatter():
     pmob_df = pd.concat([ppayroll_sum,pemployment_sum, pfirms_sum],axis=1)
     pmob_df.sort_values(by='YEAR', inplace=True, ascending = True)
     pmob_df.reset_index(inplace = True)
-    pmob_df['FIRMS_log'] = np.log2(pmob_df['NUMBER_OF_FIRMS'])
+    #pmob_df['FIRMS_log'] = np.log2(pmob_df['NUMBER_OF_FIRMS'])
+
     return jsonify(pmob_df.to_dict(orient='records'))
 
 

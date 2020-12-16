@@ -3,24 +3,33 @@
 
 ## Dashboard Overview
 
-![1-Index.html](images/sketch2.jpg)
+![1-index](images\Dashboard_Index.PNG)
 
 Our project utilizes data that breaks down employment by industry, business size, and revenue. It consists of the following visualizations:
 
-1. **Interactive Bubble Graph**- Uses this data
+1. **Stacked Bar Chart**- Uses the Flask routing @/linechart
 
-2. **Color Map**- Uses this Data 
-
-3. **/api/data**- Uses this Data 
-
-4. **other**- Uses this Data 
+2. **Scatterplot**- Uses the Flask routing @/scatterplot
 
 
-## Other Pages
+![2-bubble](images\Dashboard_Index.PNG)
 
-![2-Map.html](images/w2.jpg)
+3. **BubbleChart**- Uses the Flask routing @/bubble
 
-This page focuses on the BLANK graph, it's interactivity utilizes a slider that displays the information based on year, the filters BLANK BLANK BLANK that allows the user to search by Industry, Business Size, and State.
+
+![3-api/data](images/api_data.png)
+
+This page shows the data imported from the Database Data and returned in a jsonified output for your viewing pleasure.
+
+4. **/api/data**- Shows the imported and jsonified Database Table_df
+
+![4-Small Business Map](images\us_map_small_businesses.png)
+
+This page uses Pandas to convert the data to a color map. This map shows a breakdown of Small Business Data showing state by state comparisons with color intensity as the relative strength of each industry.
+
+![5-Big Business Map](images\us_map_big_businesses.png)
+
+This page uses Pandas to convert the data to a color map. This map shows a breakdown of Big Business Data showing state by state comparisons with color intensity as the relative strength of each industry.
 
 ## SQL DataBase
 

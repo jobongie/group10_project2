@@ -43,7 +43,7 @@ function buildCharts(sampleYEAR) {
 
       var payroll = findings.map(d => d.ANNUAL_PAYROLL)
       var employment = findings.map(d => d.EMPLOYMENT)
-      var firms = findings.map(d => d.FIRMS_log)
+      //var firms = findings.map(d => d.FIRMS_log)
       var industries = findings.map(d => d.INDUSTRY)
       var code = findings.map(d => d.NAICS_CODE)
 
@@ -52,7 +52,7 @@ function buildCharts(sampleYEAR) {
      
       var payrollb = findings_b_y.map(d => d.ANNUAL_PAYROLL)
       var employment_b = findings_b_y.map(d => d.EMPLOYMENT)
-      var firms_b = findings_b_y.map(d => d.FIRMS_log)
+      //var firms_b = findings_b_y.map(d => d.FIRMS_log)
       var industries_b = findings_b_y.map(d => d.INDUSTRY)
       var code_b = findings_b_y.map(d => d.NAICS_CODE)
       var code_bb = code_b.toString()
@@ -64,7 +64,7 @@ function buildCharts(sampleYEAR) {
      
       var payrolls = findings_s_y.map(d => d.ANNUAL_PAYROLL)
       var employment_s = findings_s_y.map(d => d.EMPLOYMENT)
-      var firms_s = findings_s_y.map(d => d.FIRMS_log)
+      //var firms_s = findings_s_y.map(d => d.FIRMS_log)
       var industries_s = findings_s_y.map(d => d.INDUSTRY)
       var code_s = findings_s_y.map(d => d.NAICS_CODE)
       var code_ss = code_s.toString()
@@ -139,7 +139,7 @@ function buildCharts(sampleYEAR) {
         marker: {
           color: employment,
           colorscale: "Greens",
-          size: firms,
+          size: 20,
           colorbar: {
               thickness: 20,
               y: 0.5,
