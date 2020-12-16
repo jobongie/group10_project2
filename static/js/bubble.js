@@ -329,9 +329,7 @@
 
 
 
- d3.json("/bubble").then(function(dataset){
-  
- 
+d3.csv("../static/data/bubble_df.csv").then(function(dataset){
 
   dataset.forEach(function(data){
     // data.Industry = +data.Industry;

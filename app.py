@@ -61,43 +61,43 @@ def home():
     """Serve homepage template."""
     return render_template("index.html")
 
-@app.route("/map")
-def map():
-    mapp_df = table_df[["STATE_DESCRIPTION","STATE_CODE","BUSINESS_CLASSIFICATION", "YEAR", 'EMPLOYMENT','ANNUAL_PAYROLL']].copy()
-    mapg_df = mapp_df.groupby(["STATE_DESCRIPTION","STATE_CODE","BUSINESS_CLASSIFICATION", "YEAR"])
-    mpayroll_sum = pd.DataFrame(mapg_df['ANNUAL_PAYROLL'].sum())
-    memployment_sum = pd.DataFrame(mapg_df['EMPLOYMENT'].sum())
-    map_df = pd.concat([mpayroll_sum,memployment_sum],axis=1)
-    map_df.sort_values(by='YEAR', inplace=True, ascending = True)
-    map_df.reset_index(inplace = True)
+# @app.route("/map")
+# def map():
+#     mapp_df = table_df[["STATE_DESCRIPTION","STATE_CODE","BUSINESS_CLASSIFICATION", "YEAR", 'EMPLOYMENT','ANNUAL_PAYROLL']].copy()
+#     mapg_df = mapp_df.groupby(["STATE_DESCRIPTION","STATE_CODE","BUSINESS_CLASSIFICATION", "YEAR"])
+#     mpayroll_sum = pd.DataFrame(mapg_df['ANNUAL_PAYROLL'].sum())
+#     memployment_sum = pd.DataFrame(mapg_df['EMPLOYMENT'].sum())
+#     map_df = pd.concat([mpayroll_sum,memployment_sum],axis=1)
+#     map_df.sort_values(by='YEAR', inplace=True, ascending = True)
+#     map_df.reset_index(inplace = True)
     
-    return jsonify(map_df.to_dict(orient='records'))
+#     return jsonify(map_df.to_dict(orient='records'))
 
-@app.route("/bubble")
-def bubble():
-    bub_df = table_df[['INDUSTRY_INDEX', 'SECTOR', 'INDUSTRY', 'BUSINESS_CLASSIFICATION', 'EMPLOYMENT','ANNUAL_PAYROLL', 'YEAR', 'COLOR_GROUP']].copy()
-    bubg_df = bub_df.groupby(["INDUSTRY_INDEX","SECTOR", "INDUSTRY", 'BUSINESS_CLASSIFICATION', 'YEAR', 'COLOR_GROUP'])
-    payroll_sum = pd.DataFrame(bubg_df['ANNUAL_PAYROLL'].sum())
-    employment_sum = pd.DataFrame(bubg_df['EMPLOYMENT'].sum())
-    bubble_df = pd.concat([payroll_sum,employment_sum],axis=1)
-    bubble_df.sort_values(by='YEAR', inplace=True, ascending = True)
-    bubble_df.reset_index(inplace = True)
-    bubble_df['AVG_SALARY'] = bubble_df['ANNUAL_PAYROLL'] / bubble_df['EMPLOYMENT']
-    bubble_df['AVG_SALARY_F'] = bubble_df['AVG_SALARY'].astype(float).map("${:,.0f}".format)
+# @app.route("/bubble")
+# def bubble():
+#     bub_df = table_df[['INDUSTRY_INDEX', 'SECTOR', 'INDUSTRY', 'BUSINESS_CLASSIFICATION', 'EMPLOYMENT','ANNUAL_PAYROLL', 'YEAR', 'COLOR_GROUP']].copy()
+#     bubg_df = bub_df.groupby(["INDUSTRY_INDEX","SECTOR", "INDUSTRY", 'BUSINESS_CLASSIFICATION', 'YEAR', 'COLOR_GROUP'])
+#     payroll_sum = pd.DataFrame(bubg_df['ANNUAL_PAYROLL'].sum())
+#     employment_sum = pd.DataFrame(bubg_df['EMPLOYMENT'].sum())
+#     bubble_df = pd.concat([payroll_sum,employment_sum],axis=1)
+#     bubble_df.sort_values(by='YEAR', inplace=True, ascending = True)
+#     bubble_df.reset_index(inplace = True)
+#     bubble_df['AVG_SALARY'] = bubble_df['ANNUAL_PAYROLL'] / bubble_df['EMPLOYMENT']
+#     bubble_df['AVG_SALARY_F'] = bubble_df['AVG_SALARY'].astype(float).map("${:,.0f}".format)
 
-    # Match titles to Bubble Chart Code
-    bubble_df = bubble_df.rename(columns={"INDUSTRY":"industry", 
-                                          "COLOR_GROUP":"color_group",
-                                          "INDUSTRY_INDEX":"industry_index",
-                                          "AVG_SALARY_F":"avg_salary_f",
-                                          "AVG_SALARY":"avg_salary",                                          
-                                          "YEAR":"year",
-                                          "SECTOR":"sector",
-                                          "BUSINESS_CLASSIFICATION":"business_classification",
-                                          "ANNUAL_PAYROLL":"annual_payroll",
-                                          "EMPLOYMENT":"employment"})
+#     # Match titles to Bubble Chart Code
+#     bubble_df = bubble_df.rename(columns={"INDUSTRY":"industry", 
+#                                           "COLOR_GROUP":"color_group",
+#                                           "INDUSTRY_INDEX":"industry_index",
+#                                           "AVG_SALARY_F":"avg_salary_f",
+#                                           "AVG_SALARY":"avg_salary",                                          
+#                                           "YEAR":"year",
+#                                           "SECTOR":"sector",
+#                                           "BUSINESS_CLASSIFICATION":"business_classification",
+#                                           "ANNUAL_PAYROLL":"annual_payroll",
+#                                           "EMPLOYMENT":"employment"})
     
-    return jsonify(bubble_df.to_dict(orient='list'))
+#     return jsonify(bubble_df.to_dict(orient='list'))
 
 @app.route("/linechart")
 def linechart():
@@ -161,10 +161,12 @@ def scatter():
     pmob_df = pd.concat([ppayroll_sum,pemployment_sum, pfirms_sum],axis=1)
     pmob_df.sort_values(by='YEAR', inplace=True, ascending = True)
     pmob_df.reset_index(inplace = True)
-    #pmob_df['FIRMS_log'] = np.log2(pmob_df['NUMBER_OF_FIRMS'])
-
+    # pmob_df['FIRMS_log'] = np.log2(pmob_df['NUMBER_OF_FIRMS'])
     return jsonify(pmob_df.to_dict(orient='records'))
 
+@app.route("/team")
+def team():
+    return render_template("masondry.html")
 
 @app.route("/charts")
 def charts():
