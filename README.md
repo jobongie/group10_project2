@@ -11,6 +11,7 @@ Our project utilizes data that breaks down employment by industry, business size
 
 2. **Scatterplot**- Uses the Flask routing @/scatterplot
 
+This page shows the data imported from the Database Data and returned in a jsonified output for your viewing pleasure.
 
 ![2-bubble](images\Dashboard_Index.PNG)
 
@@ -25,22 +26,22 @@ This page shows the data imported from the Database Data and returned in a jsoni
 
 ![4-Small Business Map](images\us_map_small_businesses.png)
 
-This page uses Pandas to convert the data to a color map. This map shows a breakdown of Small Business Data showing state by state comparisons with color intensity as the relative strength of each industry. Run in LocalHost:8000
+This page uses Pandas to convert the data to a color map. This map shows a breakdown of Small Business Data showing state by state comparisons with color intensity as the relative strength of each industry. Using D3 and Bootstrap, you have interactivity and automated image printing. Run in LocalHost:8000
 
 ![5-Big Business Map](images\us_map_big_businesses.png)
 
-This page uses Pandas to convert the data to a color map. This map shows a breakdown of Big Business Data showing state by state comparisons with color intensity as the relative strength of each industry. Run in LocalHost:8000
+This page uses Pandas to convert the data to a color map. This map shows a breakdown of Big Business Data showing state by state comparisons with color intensity as the relative strength of each industry. Using D3 and Bootstrap, you have interactivity and automated image printing. Run in LocalHost:8000
 
 ## SQL DataBase
 
-![2-static\data\US_Enterprises-CreateTable.sql](images\ERD-US_Enterprises.png)
+![6-static\data\US_Enterprises-CreateTable.sql](images\ERD-US_Enterprises.png)
 
 We utilize a Flask Server which connects locally to this DataBase. The raw data is imported from **.csv** files and joined into the table **Data** to be transformed into the Visualizations you viewed above.
 
 
 ## Presentation
 
-![2-Project_2_Group_10.pptx](images/Pres.png)
+![7-Project_2_Group_10.pptx](images/Pres.png)
 
 It tells the story.
 
@@ -72,8 +73,9 @@ To begin:
 
 7. **Navigation**- Simply use the Navbar at the top of the landing page to view the linked html pages, and the interactive sliders and filters to for the Data Visualizations.
 
+8. **LocalHost:8000**- Run this server from VSCode terminal in **GROUP10_Project2** with the command line **python -m http.server**, click on the files /Small Business Map.html /Big Business Map.html to see the data analysis by State.
 
 ### Copyright
 
 Credit
-Team 10 and other things
+Team 10, Google, and many other things.
