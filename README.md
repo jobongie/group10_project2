@@ -5,9 +5,9 @@
 
 ![Dashboard_Index](Images\Dashboard_Index.png)
 
-Our project utilizes data that breaks down employment by industry, business size, and revenue. It consists of the following visualizations:
+Our project utilizes data that breaks down employment by industry, business size, and revenue. Notable transformations were conducted in the Analysis-Latest.ipynb to perform the ETL phase of the project. The project consists of the following visualizations:
 
-1. **Stacked Bar Chart**- Uses the Flask routing @/linechart
+1. **Group Bar Chart**- Uses the Flask routing @/linechart
 
 2. **Scatterplot**- Uses the Flask routing @/scatterplot
 
