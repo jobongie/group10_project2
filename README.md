@@ -3,7 +3,7 @@
 
 ## Dashboard Overview
 
-![Dashboard_Index](Images\Dashboard_Index.png)
+![Dashboard_Index](images\Dashboard_Index.png)
 
 Our project utilizes data that breaks down employment by industry, business size, and revenue. It consists of the following visualizations:
 
@@ -11,16 +11,17 @@ Our project utilizes data that breaks down employment by industry, business size
 
 2. **Scatterplot**- Uses the Flask routing @/scatterplot
 
-This page shows the data imported from the Database Data and returned in a jsonified output for your viewing pleasure.
-
-![Dashboard_Index](images\Dashboard_Index.PNG)
-
-3. **BubbleChart**- Uses the Flask routing @/bubble
-
+This page shows the data imported from the Database **Data** and returned in a jsonified output for your viewing pleasure.
 
 ![api_data](images/api_data.png)
 
+3. **BubbleChart**- Uses the Flask routing @/bubble
+
+![bubbles](images/bubbles.png)
+
 This page shows the data imported from the Database Data and returned in a jsonified output for your viewing pleasure.
+
+![api_data](images/api_data.png)
 
 4. **/api/data**- Shows the imported and jsonified Database Table_df
 

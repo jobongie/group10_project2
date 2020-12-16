@@ -172,6 +172,14 @@ def team():
 def charts():
     return render_template("bubble.html")
 
+#@app.route("/small")
+#def charts():
+ #   return render_template("Small Businesses Map.html")
+
+#@app.route("/Big")
+#def charts():
+ #   return render_template("Big Businesses Map.html")
+
 if __name__ == "__main__":
     app.run(debug=True)  
 
