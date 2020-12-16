@@ -172,13 +172,13 @@ def team():
 def charts():
     return render_template("bubble.html")
 
-#@app.route("/small")
-#def charts():
- #   return render_template("Small Businesses Map.html")
+@app.route("/map1")
+def map1():
+    return render_template("Big Businesses Map.html")
 
-#@app.route("/Big")
-#def charts():
- #   return render_template("Big Businesses Map.html")
+@app.route("/map2")
+def map2():
+    return render_template("Small Businesses Map.html")
 
 if __name__ == "__main__":
     app.run(debug=True)  
