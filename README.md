@@ -3,7 +3,7 @@
 
 ## Dashboard Overview
 
-![Dashboard_Index](images\Dashboard_Index.png)
+![Dashboard_Index](images/Dashboard_Index.png)
 
 Our project utilizes data that breaks down employment by industry, business size, and revenue. Notable transformations were conducted in the Analysis-Latest.ipynb to perform the ETL phase of the project. The project consists of the following visualizations:
 
@@ -16,12 +16,12 @@ Our project utilizes data that breaks down employment by industry, business size
 3. **BubbleChart**- Uses the Flask routing @/bubble
 
 
-![us_map_big_businesses](images\us_map_big_businesses.png)
+![us_map_big_businesses](images/us_map_big_businesses.png)
 
 4. **Large Business Map**- Uses the Flask routing @/map1
 
 
-![us_map_small_businesses](images\us_map_small_businesses.png)
+![us_map_small_businesses](images/us_map_small_businesses.png)
 
 5. **Small Business Map**- Uses the Flask routing @/map2
 
